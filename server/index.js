@@ -21,3 +21,4 @@ mongoose.connect(
 );
 
 app.use('/auth', require('./routers/user.router'));
+app.use('/habit', require('./routers/habit.router'));
