@@ -1,13 +1,19 @@
 import React from "react";
-import Navbar from "./components/layout/Navbar";
+
 import Router from "./Router";
+import { BrowserRouter } from "react-router-dom";
+import axios from "axios";
+import { AuthContextProvider } from "./context/AuthContext";
+
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Router />
-    </>
+    <AuthContextProvider>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </AuthContextProvider>
   );
 }
 
