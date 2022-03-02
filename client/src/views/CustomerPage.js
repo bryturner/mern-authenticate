@@ -1,5 +1,14 @@
+import React from "react";
+import CustomerForm from "../components/forms/CustomerForm";
+import CustomerList from "../components/lists/CustomerList";
+
 function CustomerPage() {
-  return <div>Customers</div>;
+  return (
+    <div>
+      <CustomerForm />
+      <CustomerList />
+    </div>
+  );
 }
 
 export default CustomerPage;
