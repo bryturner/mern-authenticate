@@ -1,17 +1,7 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function HomePage() {
-  //   const [welcomeMessage, setWelcomeMessage] = useState("");
-  //   async function getUserFirstName() {
-  //     const userResponse = await axios.get("http://localhost:5010/");
-  //     console.log(userResponse.data);
-  //   }
-
-  //   useEffect(() => {
-  //     getUserFirstName();
-  //   }, []);
-  return <div>Home</div>;
+  return <div>Please register a new account or login</div>;
 }
 
 export default HomePage;
