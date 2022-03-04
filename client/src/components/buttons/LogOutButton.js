@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import { ButtonStyled } from "../../styles/Button.styled";
 
 function LogOutButton() {
   const { getLoggedIn } = useContext(AuthContext);
@@ -13,7 +14,7 @@ function LogOutButton() {
     await getLoggedIn();
     navigate("/");
   }
-  return <button onClick={logOut}>Log Out</button>;
+  return <ButtonStyled onClick={logOut}>Log Out</ButtonStyled>;
 }
 
 export default LogOutButton;

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CustomerForm from "../components/forms/CustomerForm";
 import CustomerList from "../components/lists/CustomerList";
+import { CustomerContainer } from "../styles/Container.styled";
 
 function CustomerPage() {
   const [customers, setCustomers] = useState([]);
@@ -16,10 +17,10 @@ function CustomerPage() {
   }, []);
 
   return (
-    <div>
+    <CustomerContainer>
       <CustomerForm getCustomers={getCustomers} />
       <CustomerList customers={customers} />
-    </div>
+    </CustomerContainer>
   );
 }
 

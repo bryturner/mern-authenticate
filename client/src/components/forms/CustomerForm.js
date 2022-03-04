@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { firstLetterToUpperCase } from "../../utilities/helpers";
+import { formatName } from "../../utilities/helpers";
+import { CustomerFormStyled } from "../../styles/Form.styled";
+import { ButtonStyled } from "../../styles/Button.styled";
 
 function CustomerForm({ getCustomers }) {
   const [firstName, setFirstName] = useState("");
@@ -17,20 +19,24 @@ function CustomerForm({ getCustomers }) {
 
     try {
       const customerData = {
-        firstName: firstLetterToUpperCase(firstName),
-        lastName: firstLetterToUpperCase(lastName),
+        firstName: formatName(firstName),
+        lastName: formatName(lastName),
         stateAbbreviation: stateAbbreviation,
         itemPurchased: itemPurchased,
       };
       await axios.post("http://localhost:5010/customer/", customerData);
       getCustomers();
+      setFirstName("");
+      setLastName("");
+      setStateAbbreviation("");
+      setItemPurchased("");
     } catch (err) {
       console.error(err);
     }
   }
 
   return (
-    <div>
+    <CustomerFormStyled>
       <h2>Save a new customer</h2>
       <form onSubmit={saveCustomer}>
         <input
@@ -51,15 +57,6 @@ function CustomerForm({ getCustomers }) {
           value={lastName}
           required
         />
-        {/* <input
-          type="text"
-          placeholder="CO"
-          maxLength="2"
-          onChange={(e) => {
-            setStateAbbreviation(e.target.value);
-          }}
-          value={stateAbbreviation}
-        /> */}
         <select
           onChange={(e) => {
             setStateAbbreviation(e.target.value);
@@ -131,9 +128,9 @@ function CustomerForm({ getCustomers }) {
           <option value="House">House</option>
         </select>
 
-        <button type="submit">Save Customer</button>
+        <ButtonStyled type="submit">Save Customer</ButtonStyled>
       </form>
-    </div>
+    </CustomerFormStyled>
   );
 }
 

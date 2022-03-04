@@ -1,7 +1,9 @@
-export const firstLetterToUpperCase = (word) => {
-  const allLowerCaseWord = word.toLowerCase();
-  const firstLetterUpperCase = allLowerCaseWord.slice(0, 1).toUpperCase();
-  return firstLetterUpperCase.concat(
-    allLowerCaseWord.slice(1, allLowerCaseWord.length)
-  );
+export const formatName = (name) => {
+  const formattedName = name
+    .trim()
+    .toLowerCase()
+    .slice(0, 1)
+    .toUpperCase()
+    .concat(name.slice(1, name.length));
+  return formattedName;
 };

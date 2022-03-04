@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import LogOutButton from "../components/buttons/LogOutButton";
 import AuthContext from "../context/AuthContext";
+import { NavbarStyled } from "../styles/Navbar.styled";
 
 function Navbar() {
   const { loggedIn } = useContext(AuthContext);
 
   return (
-    <div>
+    <NavbarStyled>
       <Link to="/">Home</Link>
       {loggedIn === false && (
         <>
@@ -21,7 +22,7 @@ function Navbar() {
           <LogOutButton />
         </>
       )}
-    </div>
+    </NavbarStyled>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { CustomerListStyled } from "../../styles/List.styled";
 
 function CustomerList({ customers }) {
   function renderCustomers() {
@@ -6,7 +7,7 @@ function CustomerList({ customers }) {
       return (
         <li key={i}>
           <p>
-            {customer.firstName}, {customer.lastName},
+            {customer.firstName}, {customer.lastName},{" "}
             {customer.stateAbbreviation}, {customer.itemPurchased}
           </p>
         </li>
@@ -15,9 +16,10 @@ function CustomerList({ customers }) {
   }
 
   return (
-    <div>
+    <CustomerListStyled>
+      <h3>Current Customer List</h3>
       <ul>{renderCustomers()}</ul>
-    </div>
+    </CustomerListStyled>
   );
 }
 
