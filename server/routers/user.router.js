@@ -6,11 +6,10 @@ const jwt = require('jsonwebtoken');
 // Register user
 router.post('/', async (req, res) => {
   try {
-    const { firstName, email, username, password, passwordVerify, habits } =
-      req.body;
+    const { email, username, password, passwordVerify, habits } = req.body;
 
     // Capture error and display on front-end
-    if (!firstName || !email || !username || !password || !passwordVerify)
+    if (!email || !username || !password || !passwordVerify)
       return res
         .status(400)
         .json({ errorMessage: 'Please enter all required fields' });
@@ -41,7 +40,6 @@ router.post('/', async (req, res) => {
     const passwordHash = await bcrypt.hash(password, salt);
 
     const newUser = new User({
-      firstName,
       email,
       username,
       passwordHash,
@@ -119,6 +117,21 @@ router.get('/logout', (req, res) => {
       expires: new Date(0),
     })
     .send();
+});
+
+// User is logged in
+router.get('/loggedIn', (req, res) => {
+  try {
+    const token = req.cookies.token;
+
+    if (!token) return res.json(false);
+
+    jwt.verify(token, process.env.JWT_SECRET);
+
+    res.send(true);
+  } catch (err) {
+    res.json(false);
+  }
 });
 
 module.exports = router;

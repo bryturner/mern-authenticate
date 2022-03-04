@@ -13,6 +13,12 @@ app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: ['http://localhost:3000'],
+    credentials: true,
+  })
+);
 
 mongoose.connect(
   process.env.MONGO_DB_CONNECTION,
@@ -21,3 +27,4 @@ mongoose.connect(
 );
 
 app.use('/auth', require('./routers/user.router'));
+
