@@ -27,4 +27,4 @@ mongoose.connect(
 );
 
 app.use('/auth', require('./routers/user.router'));
-
+app.use('/customer', require('./routers/customer.router'));
