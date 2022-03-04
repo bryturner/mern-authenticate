@@ -12,7 +12,7 @@ function LogOutButton() {
   async function logOut() {
     await axios.get("http://localhost:5010/auth/logout");
     await getLoggedIn();
-    navigate("/");
+    navigate("/logout");
   }
   return <ButtonStyled onClick={logOut}>Log Out</ButtonStyled>;
 }

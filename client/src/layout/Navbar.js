@@ -9,15 +9,16 @@ function Navbar() {
 
   return (
     <NavbarStyled>
-      <Link to="/">Home</Link>
       {loggedIn === false && (
         <>
+          <Link to="/">Home</Link>
           <Link to="/register">Register</Link>
           <Link to="/login">Login</Link>
         </>
       )}
       {loggedIn === true && (
         <>
+          <Link to="/welcome">Home</Link>
           <Link to="/customer">Customers</Link>
           <LogOutButton />
         </>

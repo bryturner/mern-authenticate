@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import AuthContext from "../context/AuthContext";
 import { useNavigate } from "react-router";
+import { RegisterFormStyled } from "../styles/Form.styled";
+import { ButtonStyled } from "../styles/Button.styled";
 
 function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -31,7 +33,7 @@ function RegisterPage() {
   }
 
   return (
-    <div>
+    <RegisterFormStyled>
       <h1>Register new account</h1>
       <form onSubmit={register}>
         <input
@@ -59,9 +61,9 @@ function RegisterPage() {
           onChange={(e) => setPasswordVerify(e.target.value)}
           value={passwordVerify}
         />
-        <button type="submit">Register</button>
+        <ButtonStyled type="submit">Register</ButtonStyled>
       </form>
-    </div>
+    </RegisterFormStyled>
   );
 }
 

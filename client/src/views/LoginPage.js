@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import AuthContext from "../context/AuthContext";
 import { useNavigate } from "react-router";
+import { LoginFormStyled } from "../styles/Form.styled";
+import { ButtonStyled } from "../styles/Button.styled";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
@@ -20,15 +22,15 @@ function LoginPage() {
       };
       await axios.post("http://localhost:5010/auth/login", loginData);
       await getLoggedIn();
-      navigate("/");
+      navigate("/welcome");
     } catch (err) {
       console.error(err);
     }
   }
 
   return (
-    <div>
-      <h1>Log In to Account</h1>
+    <LoginFormStyled>
+      <h1>Login</h1>
       <form onSubmit={login}>
         <input
           type="text"
@@ -44,9 +46,9 @@ function LoginPage() {
           value={password}
         />
 
-        <button type="submit">Login</button>
+        <ButtonStyled type="submit">Login</ButtonStyled>
       </form>
-    </div>
+    </LoginFormStyled>
   );
 }
 

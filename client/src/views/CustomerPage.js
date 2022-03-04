@@ -10,6 +10,7 @@ function CustomerPage() {
   async function getCustomers() {
     const customerResponse = await axios.get("http://localhost:5010/customer/");
     setCustomers(customerResponse.data);
+    console.log(customerResponse);
   }
 
   useEffect(() => {
