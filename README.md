@@ -1,5 +1,5 @@
-# Habit Tracker MERN Stack
- This app is in the process of being built.
+# MERN Authentication with JWT
+The basic user registration/login app uses JWTs to authenticate the user in order to give the user permission to view other pages in the app. 
 
 ## Technologies
 - React
@@ -14,7 +14,9 @@
 ## Features
 - Registration Validation
 - Login Authentication using JWTs
+- Render customer list upon submission
+- HTTP Only cookies
 
 ## Author
 **Bryan Turner**
--[My LinkedIn Profile](https://www.linkedin.com/in/bryanturnerdev/)
+- [My LinkedIn Profile](https://www.linkedin.com/in/bryanturnerdev/)
