@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
+
+import UserContext from "../context/UserContext";
 
 function WelcomePage() {
-  //   const [welcomeMessage, setWelcomeMessage] = useState("");
-  //   async function getUserFirstName() {
-  //     const userResponse = await axios.get("http://localhost:5010/auth/");
-  //     console.log(userResponse.data);
-  //   }
+  const { userFirstName } = useContext(UserContext);
 
-  //   useEffect(() => {
-  //     getUserFirstName();
-  //   }, []);
   return (
     <div>
-      Welcome! Please click the customers link to save new customers and see a
-      list of the current customers.
+      Welcome {userFirstName || ""}! Please click the customers link to save new
+      customers and see a list of the current customers.
     </div>
   );
 }

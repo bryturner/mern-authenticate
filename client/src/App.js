@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 import { AuthContextProvider } from "./context/AuthContext";
 import GlobalStyle from "./styles/Global.styled";
+import { UserContextProvider } from "./context/UserContext";
 
 axios.defaults.withCredentials = true;
 
@@ -13,9 +14,11 @@ function App() {
     <>
       <GlobalStyle />
       <AuthContextProvider>
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
+        <UserContextProvider>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+        </UserContextProvider>
       </AuthContextProvider>
     </>
   );

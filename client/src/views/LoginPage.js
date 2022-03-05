@@ -4,12 +4,14 @@ import AuthContext from "../context/AuthContext";
 import { useNavigate } from "react-router";
 import { LoginFormStyled } from "../styles/Form.styled";
 import { ButtonStyled } from "../styles/Button.styled";
+import UserContext from "../context/UserContext";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const { getLoggedIn } = useContext(AuthContext);
+  const { getUserFirstName } = useContext(UserContext);
   const navigate = useNavigate();
 
   async function login(e) {
@@ -20,7 +22,9 @@ function LoginPage() {
         username,
         password,
       };
-      await axios.post("http://localhost:5010/auth/login", loginData);
+      await axios
+        .post("http://localhost:5010/auth/login", loginData)
+        .then((res) => getUserFirstName(res.data));
       await getLoggedIn();
       navigate("/welcome");
     } catch (err) {

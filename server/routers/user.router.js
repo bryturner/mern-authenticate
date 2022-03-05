@@ -6,10 +6,11 @@ const jwt = require('jsonwebtoken');
 // Register user
 router.post('/', async (req, res) => {
   try {
-    const { email, username, password, passwordVerify, habits } = req.body;
+    const { firstName, email, username, password, passwordVerify, habits } =
+      req.body;
 
     // Capture error and display on front-end
-    if (!email || !username || !password || !passwordVerify)
+    if (!firstName || !email || !username || !password || !passwordVerify)
       return res
         .status(400)
         .json({ errorMessage: 'Please enter all required fields' });
@@ -40,6 +41,7 @@ router.post('/', async (req, res) => {
     const passwordHash = await bcrypt.hash(password, salt);
 
     const newUser = new User({
+      firstName,
       email,
       username,
       passwordHash,
@@ -98,11 +100,12 @@ router.post('/login', async (req, res) => {
       process.env.JWT_SECRET
     );
 
+    //  console.log(existingUser);
     res
       .cookie('token', token, {
         httpOnly: true,
       })
-      .send();
+      .send(existingUser._id);
   } catch (err) {
     console.error(err);
     res.status(500).send();
@@ -131,6 +134,26 @@ router.get('/loggedIn', (req, res) => {
     res.send(true);
   } catch (err) {
     res.json(false);
+  }
+});
+
+// router.get('/welcome', async (req, res) => {
+//   try {
+//     await User.find({}).then(users => {
+//       res.json(users);
+//     });
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
+
+router.get('/login', async (req, res) => {
+  try {
+    await User.find({}).then(users => {
+      res.send(users);
+    });
+  } catch (err) {
+    console.log(err);
   }
 });
 

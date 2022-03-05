@@ -11,6 +11,7 @@ function AuthContextProvider(props) {
     const loggedInResponse = await axios.get(
       "http://localhost:5010/auth/loggedIn"
     );
+
     setLoggedIn(loggedInResponse.data);
   }
 
