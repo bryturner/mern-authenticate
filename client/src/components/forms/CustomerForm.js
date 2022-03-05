@@ -47,6 +47,7 @@ function CustomerForm({ getCustomers }) {
           }}
           value={firstName}
           required
+          autoFocus
         />
         <input
           type="text"

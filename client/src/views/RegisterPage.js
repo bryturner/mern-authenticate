@@ -39,6 +39,7 @@ function RegisterPage() {
         <input
           type="email"
           placeholder="name@email.com"
+          autoFocus
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />

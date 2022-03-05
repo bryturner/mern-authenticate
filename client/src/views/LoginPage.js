@@ -39,6 +39,7 @@ function LoginPage() {
         <input
           type="text"
           placeholder="username"
+          autoFocus
           onChange={(e) => setUsername(e.target.value)}
           value={username}
         />
